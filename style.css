@@ -1,0 +1,72 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+h1 {
+  margin-bottom: 2rem;
+}
+
+.conatiner {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(215, 176, 103);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  text-align: center;
+}
+
+.circleConatiner {
+  margin: 3rem 0;
+  display: flex;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  background-color: rgb(168, 116, 20);
+  cursor: pointer;
+}
+.circle.active {
+  background-color: orange;
+}
+
+.play {
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: orange;
+}
+
+.play:hover {
+  background-color: rgb(201, 157, 75);
+}
+
+#end {
+  display: none;
+}
+
+#overlay {
+  visibility: hidden;
+  position: fixed;
+  font-size: 50px;
+  background: rgba(255, 165, 0, 0.73);
+  justify-content: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 200px;
+  border-radius: 10px;
+}
