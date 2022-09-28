@@ -4,7 +4,7 @@ const circles = document.querySelectorAll(".circle");
 const score = document.querySelector("#score");
 const overlay = document.querySelector("#overlay");
 const modalscore = document.querySelector("#modalscore");
-const closebutton = document.querySelector("#closebutton");
+const closeButton = document.querySelector("#closeButton");
 
 let count = 0;
 let activeNum = 0;
@@ -16,11 +16,16 @@ let gameIsOn = false;
 //sounds
 const startSound = new Audio("sounds/starter.wav");
 const endGameSound = new Audio("sounds/gameover.wav");
-const click = new Audio("sounds/click.mp3");
+const click = new Audio("sounds/click.wav");
 
 console.log(startSound);
 
 // start game functionality starts here
+
+const playAudio = () => {
+  startSound.play();
+};
+
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -35,7 +40,6 @@ const newCircle = (activeNum) => {
 };
 
 const startgame = () => {
-  startSound.play();
   gameIsOn = true;
   startButton.style.display = "none";
   endButton.style.display = "initial";
@@ -71,25 +75,25 @@ const endGame = () => {
 const scoreCount = (i) => {
   if (i != activeNum) {
     endGame();
-    startSound.stop();
-    endGameSound.play();
   } else {
     count++;
     rounds--;
     score.textContent = count;
 
     if (count >= 1 && count <= 5) {
-      modalscore.textContent = ` You picked only ${count} color`;
+      modalscore.textContent = ` You scored only ${count} Goal`;
     } else if (count >= 6 && count <= 15) {
-      modalscore.textContent = ` You picked  ${count} color well done `;
+      modalscore.textContent = ` You scored  ${count} Goal "well done" `;
     } else if (count >= 16) {
-      modalscore.textContent = ` You picked  ${count} color very good job`;
+      modalscore.textContent = ` You scored  ${count} Goal "very good job"`;
     }
   }
 };
 
 circles.forEach((circle, i) => {
   circle.addEventListener("click", () => {
+    click.play();
+
     if (circle.click && gameIsOn === true) {
       scoreCount(i);
     }
@@ -106,6 +110,7 @@ const newGame = () => {
 
 // reset game functionalty ends here
 
+startButton.addEventListener("click", playAudio);
 startButton.addEventListener("click", startgame);
 endButton.addEventListener("click", endGame);
-closebutton.addEventListener("click", newGame);
+closeButton.addEventListener("click", newGame);
