@@ -92,9 +92,8 @@ const scoreCount = (i) => {
 
 circles.forEach((circle, i) => {
   circle.addEventListener("click", () => {
-    click.play();
-
     if (circle.click && gameIsOn === true) {
+      click.play();
       scoreCount(i);
     }
   });
